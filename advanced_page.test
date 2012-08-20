@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Tests for advanced_page module.
+ */
+
+class AdvancedPageTestCase extends DrupalWebTestCase {
+  protected $advpg_user;
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Advanced Page',
+      'description' => 'Allow a site maintainer to provide editors a way to create and edit static pages on the site.',
+      'group' => 'Advanced Page',
+    );
+  }
+
+  /**
+   * Enable modules and create users with specific permissions.
+   */
+  function setUp() {
+    parent::setUp('advanced_page');
+    // Create users.
+    $this->advpg_user = $this->drupalCreateUser(array('Administer Advanced Page', 'View Advanced Page List'));
+  }
